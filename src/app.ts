@@ -1,6 +1,7 @@
+import { Request, Response } from "express";
 import { app } from "../init";
 
-app.get('/web/login',async(req:Request,res:any)=>{
+app.post('/web/login',async(req:Request,res:Response)=>{
     console.log(req.body);
     
 })
