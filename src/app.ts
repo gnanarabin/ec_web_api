@@ -1,7 +1,12 @@
-import { Request, Response } from "express";
+import express, { Request } from "express";
 import { app } from "../init";
+import { AccountController } from "./middleware/AccountController";
 
-app.post('/web/login',async(req:Request,res:Response)=>{
-    console.log(req.body);
-    
-})
+const accountController = new AccountController()
+
+const router = express.Router()
+
+
+router.post('/login',accountController.getAccountDetail);
+
+export default router
