@@ -1,6 +1,6 @@
 import express, { Request } from "express";
 import { app } from "../init";
-import { AccountController } from "./middleware/AccountController";
+import { AccountController } from "./controller/AccountController";
 
 const accountController = new AccountController()
 
