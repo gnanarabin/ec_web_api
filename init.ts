@@ -2,10 +2,14 @@ import express, { Response } from 'express';
 import cors from 'cors'
 import mongoose from "mongoose"
 import accountRouter from './src/app'
+import { Server } from "socket.io";
+
 
 export const app = express()
 
 const port = 3010;
+
+
 
 app.use(cors());
 app.use(express.json())
