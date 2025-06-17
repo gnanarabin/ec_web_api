@@ -6,6 +6,6 @@ export class AccountController {
 
   toLogin = async (req: Request, res: Response): Promise<any> => {
     let params = req.body
-    return await this.login.getUserDetails(params)
+    return this.login.getUserDetails(params)
   }
 }
