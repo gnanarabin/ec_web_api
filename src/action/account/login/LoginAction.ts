@@ -1,11 +1,13 @@
 import { BusinessException } from "../../../business/BusinessException"
+import { DbAction } from "../../../db/db_update/InsertValue"
+import { user } from "../../../db/models/userAccount"
 import { LoginCredentials } from "../../../interface/account/Login"
-import { user } from "../../../models/userAccount"
 import { Validation } from "./Validation"
 
 export class LoginAction {
 
     loginValidation = new Validation(this)
+    dbAction = new DbAction()
 
 
 
@@ -19,9 +21,20 @@ export class LoginAction {
 
         let existingUser = await user.find({ name: params.username })
 
-        if (!existingUser) {
-            throw new BusinessException("Invalid User")
+        if (existingUser) {
+            throw new BusinessException("User Already Exists")
         }
+
+        const newUser = new user({
+            name: params.username,
+            password: params.password
+        })
+
+        await this.dbAction.insertOne(newUser)
+
+        return newUser
+
+
 
     }
 }
