@@ -9,6 +9,6 @@ const authendication = new Authendication()
 const router = express.Router()
 
 
-router.post('/login', authendication.authenticate, accountController.toLogin);
+router.post('/login', authendication.authendication, accountController.toLogin);
 
 export default router

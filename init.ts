@@ -2,7 +2,7 @@ import express, { Response } from 'express';
 import cors from 'cors'
 import mongoose from "mongoose"
 import accountRouter from './src/app'
-import { Server } from "socket.io";
+import morgan from "morgan";
 
 
 export const app = express()
@@ -10,19 +10,18 @@ export const app = express()
 const port = 3010;
 
 
-
+// app.use(morgan('combined'))
+app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json())
 
 
-mongoose.connect("mongodb://localhost:2000/")
+mongoose.connect("mongodb://localhost:27017/e-commerce")
     .then(() => {
         console.log("DB Connected");
 
-    }).catch((err) => {
-        console.log(err);
-        
     })
+    .catch((err) => console.error("DB Connection Error:", err));
 
 
 

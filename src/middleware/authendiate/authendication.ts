@@ -1,12 +1,12 @@
 export class Authendication {
 
 
-    public authenticate(req: any, res: any, next: any): void {
+    public authendication(req: any, res: any, next: any): void {
         try {
             next()
         } catch (error) {
-            console.error("Authentication error:", error);
-            res.status(401).json({ message: "Unauthorized" });
+            const err = error as Error;
+            res.status(401).json({ error: err.message });
         }
     }
 }
