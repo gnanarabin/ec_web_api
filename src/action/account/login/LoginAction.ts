@@ -19,7 +19,7 @@ export class LoginAction {
 
         console.log(params);
 
-        let existingUser = await user.find({ name: params.username })
+        let existingUser = await user.findOne({ name: params.username })
 
         if (existingUser) {
             throw new BusinessException("User Already Exists")
