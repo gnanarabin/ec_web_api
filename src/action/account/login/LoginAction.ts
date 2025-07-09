@@ -14,7 +14,7 @@ export class LoginAction {
     getUserDetails = async (params: LoginCredentials) => {
 
         if (!this.loginValidation.isvalid(params)) {
-            throw new BusinessException("invalid Credentials")
+            throw new BusinessException("invalid Credentialss")
         }
 
         console.log(params);
